@@ -1,4 +1,5 @@
 from django.shortcuts import render
+import markdown2
 
 from . import util
 
@@ -8,5 +9,13 @@ def index(request):
         "entries": util.list_entries()
     })
 
-def entry(request):
-    return render(request, f"entries/{util.get_entry('CSS')}")
+def wiki_detail_view(request, entry=None):
+    entry_obj = None
+    if entry is not None:
+        entry_obj = markdown2.markdown(util.get_entry(entry))
+        
+    context = {
+        "title": entry,
+        "object": entry_obj,
+    }
+    return render(request, "encyclopedia/detail.django-html", context=context)
