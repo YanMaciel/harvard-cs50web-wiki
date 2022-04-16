@@ -5,7 +5,7 @@ from . import util
 
 
 def index(request):
-    return render(request, "encyclopedia/index.html", {
+    return render(request, "encyclopedia/index.django-html", {
         "entries": util.list_entries()
     })
 
