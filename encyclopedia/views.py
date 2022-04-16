@@ -10,6 +10,7 @@ def index(request):
     })
 
 def wiki_detail_view(request, entry=None):
+    print(util.list_entries())
     try:
         entry_obj = None
         if entry is not None:
@@ -25,3 +26,8 @@ def wiki_detail_view(request, entry=None):
             "title": entry,
         }
         return render(request, "encyclopedia/not_found.django-html", context=context)
+    
+def search_entry_view(request, searched_entry=None):
+    if searched_entry is not None:
+        if searched_entry in util.list_entries():
+            return wiki_detail_view(request, searched_entry)
