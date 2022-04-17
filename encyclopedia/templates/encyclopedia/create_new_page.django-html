@@ -1,0 +1,28 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Create New Page
+{% endblock %}
+
+{% block body %}
+    <h1>Let's Create a new page! :)</h1>
+    <br><br>
+
+    <form method="post">
+        <label for="title"><h5>Title of the page:</h5></label>
+        <input
+        id="title"
+        class="search"
+        type="text"
+        name="title"
+        style="width: 30%;"
+        />
+        <br>
+        <h5><strong>Please use <a href="https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax" target="_blank">
+            Markdown Syntax</a> for the content of the page:</strong></h5>
+        <textarea id="content" name="content" rows="4" cols="50">
+        </textarea>
+    </form>
+
+
+{% endblock %}

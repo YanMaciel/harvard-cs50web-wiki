@@ -52,6 +52,10 @@ def search(request):
         return render(request, "encyclopedia/search_get.django-html")
             
         
+def create_new_page(request):
+    
+    return render(request, "encyclopedia/create_new_page.django-html")
+
 def handle_random(request):
     
     random_index = random.randint(0, len(util.list_entries())-1)
