@@ -5,7 +5,9 @@
 {{ title }}
 {% endblock %}
 
-{% block body %} 
-<a href="edit/"
+{% block body %}
+<br> 
+<a href="edit/">Edit this page</a>
+<br>
 {{ object|safe }}
 {% endblock %}

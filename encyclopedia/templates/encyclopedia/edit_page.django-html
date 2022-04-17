@@ -5,18 +5,17 @@
 {% endblock %}
 
 {% block body %}
-    <h3>Editing {{ }} page:</h3>
-    <br><br>
+    <br>
+    <h3>Editing <strong>{{ title }}</strong> page:</h3>
+    <br>
 
-    <form id="edit_page" method="post" action="{% url 'edit_page' %}">
+    <form id="edit_page" method="post">
         {% csrf_token %}
 
         <div class="form-group w-50">
             <label for="exampleFormControlTextarea1"><h5><strong>Please use <a href="https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax" target="_blank">
                 Markdown Syntax</a> to edit the content of the page:</strong></h5></label>
-            <textarea class="form-control" name="content" id="exampleFormControlTextarea1" rows="15" required>
-                {{  }}
-            </textarea>
+            <textarea class="form-control" name="content" id="exampleFormControlTextarea1" rows="15" required>{{ content }}</textarea>
         </div>
         <button type="submit" form="edit_page" class="btn btn-primary">Save this page</button>
     </form>
