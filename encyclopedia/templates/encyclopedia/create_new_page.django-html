@@ -9,19 +9,17 @@
     <br><br>
 
     <form method="post">
-        <label for="title"><h5>Title of the page:</h5></label>
-        <input
-        id="title"
-        class="search"
-        type="text"
-        name="title"
-        style="width: 30%;"
-        />
-        <br>
-        <h5><strong>Please use <a href="https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax" target="_blank">
-            Markdown Syntax</a> for the content of the page:</strong></h5>
-        <textarea id="content" name="content" rows="4" cols="50">
-        </textarea>
+        <div class="form-group w-25">
+            <label for="exampleFormControlInput1"><h5><strong>Title of the New Page:</h5></strong></label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" autofocus>
+        </div>
+        
+        <div class="form-group w-50">
+            <label for="exampleFormControlTextarea1"><h5><strong>Please use <a href="https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax" target="_blank">
+                Markdown Syntax</a> for the content of the page:</strong></h5></label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="15"></textarea>
+        </div>
+        <button type="button" class="btn btn-primary">Save this page</button>
     </form>
 
 
