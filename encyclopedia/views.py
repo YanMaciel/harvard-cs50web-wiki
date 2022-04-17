@@ -54,6 +54,18 @@ def search(request):
         
 def create_new_page(request):
     
+    if request.method == 'POST':
+        
+        # Checks  if an encyclopedia entry already exists
+        entries = util.list_entries()
+        if request.POST.get("title") in entries:
+            return render(request, "encyclopedia/page_already_exists.django-html", {
+                "entry": request.POST.get("title"),
+            })
+            
+        title = '# ' + request.POST.get("title")
+        content = request.POST.get("content") 
+    
     return render(request, "encyclopedia/create_new_page.django-html")
 
 def handle_random(request):
