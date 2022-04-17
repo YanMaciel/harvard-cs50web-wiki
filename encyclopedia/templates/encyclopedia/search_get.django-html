@@ -1,0 +1,21 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Search
+{% endblock %}
+
+{% block body %}
+    <h1>You can search any page here:</h1>
+
+    <form method="post" action="{% url 'search' %}">
+        {% csrf_token %}
+        <input
+          class="search"
+          type="text"
+          name="q"
+          placeholder="Search Encyclopedia"
+          style="width: 30%"
+        />
+      </form>
+
+{% endblock %}

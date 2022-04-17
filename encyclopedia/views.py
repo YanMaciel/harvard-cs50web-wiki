@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 import markdown2
 
 from . import util
@@ -27,7 +27,31 @@ def wiki_detail_view(request, entry=None):
         }
         return render(request, "encyclopedia/not_found.django-html", context=context)
     
-def search_entry_view(request, searched_entry=None):
-    if searched_entry is not None:
-        if searched_entry in util.list_entries():
-            return wiki_detail_view(request, searched_entry)
+def search(request):
+    
+    if request.method == 'POST':
+        entries = util.list_entries()
+        
+        search_entry = request.POST.get("q")
+        
+        if search_entry in entries:
+            return redirect("wiki_detail", entry=search_entry)
+        
+        similar_entries = [entry for entry in entries if search_entry in entry]
+        
+        if similar_entries:
+            return render(request, "encyclopedia/search.django-html", {
+                "search_entry": search_entry,
+                "similar_entries": similar_entries,
+            })
+            
+        return redirect("wiki_detail", entry=search_entry)
+            
+    if request.method == 'GET':
+        return render(request, "encyclopedia/search_get.django-html")
+            
+        
+
+    
+    
+    
