@@ -58,15 +58,21 @@ def create_new_page(request):
         
         # Checks  if an encyclopedia entry already exists
         entries = util.list_entries()
-        if request.POST.get("title") in entries:
+        if request.POST.get("title").lower() in [entry.lower() for entry in entries]:
             return render(request, "encyclopedia/page_already_exists.django-html", {
                 "entry": request.POST.get("title"),
             })
             
-        title = '# ' + request.POST.get("title")
-        content = request.POST.get("content") 
+        # Saves new entry and redirects to it
+        title = request.POST.get("title")
+        content = "# " + title + "\n" + request.POST.get("content")
+        util.save_entry(title, content)
+        return redirect("wiki_detail", entry=title)
     
     return render(request, "encyclopedia/create_new_page.django-html")
+
+def edit_page(request):
+    return render(request, "encyclopedia/edit_page.django-html")
 
 def handle_random(request):
     

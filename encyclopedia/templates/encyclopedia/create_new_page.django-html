@@ -12,13 +12,13 @@
         {% csrf_token %}
         <div class="form-group w-25">
             <label for="exampleFormControlInput1"><h5><strong>Title of the New Page:</h5></strong></label>
-            <input type="text" name="title" class="form-control" id="exampleFormControlInput1" autofocus>
+            <input type="text" name="title" class="form-control" id="exampleFormControlInput1" autofocus required>
         </div>
         
         <div class="form-group w-50">
             <label for="exampleFormControlTextarea1"><h5><strong>Please use <a href="https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax" target="_blank">
                 Markdown Syntax</a> for the content of the page:</strong></h5></label>
-            <textarea class="form-control" name="content" id="exampleFormControlTextarea1" rows="15"></textarea>
+            <textarea class="form-control" name="content" id="exampleFormControlTextarea1" rows="15" required></textarea>
         </div>
         <button type="submit" form="new_page" class="btn btn-primary">Save this page</button>
     </form>

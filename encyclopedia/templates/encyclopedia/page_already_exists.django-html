@@ -6,8 +6,6 @@
 
 {% block body %}
     <br><br>
-    <h1>This page already exists: <a href="/wiki/{{entry}}">{{ entry }}</a></h1>
+    <h2><span style="color:red">Error -></span> This page already exists.</h2>
     <br><br>
-
-
 {% endblock %}
