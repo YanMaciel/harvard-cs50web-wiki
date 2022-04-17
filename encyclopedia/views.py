@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect
+import random
+
 import markdown2
 
 from . import util
@@ -10,7 +12,6 @@ def index(request):
     })
 
 def wiki_detail_view(request, entry=None):
-    print(util.list_entries())
     try:
         entry_obj = None
         if entry is not None:
@@ -51,7 +52,13 @@ def search(request):
         return render(request, "encyclopedia/search_get.django-html")
             
         
-
+def handle_random(request):
+    
+    random_index = random.randint(0, len(util.list_entries())-1)
+    
+    return redirect("wiki_detail", entry=util.list_entries()[random_index])
+    
+    
     
     
     
